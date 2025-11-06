@@ -31,11 +31,14 @@ config = Config(experiment=f"{_experiment}_{combo_id}", model="GlobalModelIMUPos
 # %%
 # instantiate model and data
 model = get_model(config)
+print("Got model")
 datamodule = get_datamodule(config)
+print("data module loaded")
 checkpoint_path = config.checkpoint_path 
 
 # %%
 wandb_logger = WandbLogger(project=config.experiment, save_dir=checkpoint_path)
+print("logger set!")
 
 early_stopping_callback = EarlyStopping(monitor="validation_step_loss", mode="min", verbose=False,
                                         min_delta=0.00001, patience=5)
@@ -47,6 +50,7 @@ trainer = pl.Trainer(fast_dev_run=fast_dev_run, logger=wandb_logger, max_epochs=
                      callbacks=[early_stopping_callback, checkpoint_callback], deterministic=True)
 
 # %%
+print("begin training")
 trainer.fit(model, datamodule=datamodule)
 
 # %%
