@@ -21,6 +21,7 @@ from imuposer import math
 config = Config(project_root_dir="../../")
 
 def process_amass():
+    print("Processing AMASS")
     def _syn_acc(v):
         r"""
         Synthesize accelerations from vertex positions.
@@ -181,6 +182,8 @@ def process_dipimu(split="test"):
     print('Preprocessed DIP-IMU dataset is saved at', path_to_save)
 
 if __name__ == '__main__':
+    print("Processing DIP IMU Test")
     process_dipimu(split="test")
+    print("Processing DIP IMU Train")
     process_dipimu(split="train")
     process_amass()
