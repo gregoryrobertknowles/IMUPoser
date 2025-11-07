@@ -1,9 +1,23 @@
-pytorch_lightning==1.6.5
+# Core deep learning stack
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+pytorch-lightning==1.9.5   # compatible with IMUPoser code; still supports training_epoch_end
+
+# Utilities and numerical deps
+numpy==1.26.4              # last 1.x release, compatible with PyTorch 2.x and chumpy
+scipy>=1.9.0
 tqdm==4.64.0
-matplotlib==3.2.2
-numpy==1.21.2
+matplotlib>=3.4
 opencv-python
-scipy==1.7.3
-wandb==0.12.11
-chumpy
-dotmap
+
+# Experiment tracking
+wandb>=0.15.0
+
+# Legacy SMPL dependencies
+chumpy                      # required by SMPL pickles
+dotmap                      # config mapping
+
+# Optional: comment this if you patch parametricModel.py manually
+# git+https://github.com/venthur/chumpy.git
+
